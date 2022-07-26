@@ -6,6 +6,7 @@ const passportSetup = require('./passport')
 const dotenv = require('dotenv');
 const authRouter = require('./routes/auth');
 
+
 dotenv.config();
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(passport.session());
 
 app.use(cors({
     method: 'GET, POST, PUT, DELETE',
-    origin: 'https://localhost:3000/',
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 

@@ -26,7 +26,7 @@ loginRouter.get('/logout', (req, res) => {
     res.redirect(CLIENT_URL);
 });
 
-loginRouter.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+loginRouter.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 loginRouter.get('/google/callback', passport.authenticate('google', {successRedirect: CLIENT_URL, failureRedirect: '/login/error'}));
 

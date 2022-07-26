@@ -4,9 +4,9 @@ const passport = require('passport');
 passport.use(new GoogleStrategy({
     clientID: "46819182218-u606jichkjnrgp9q9nlgfot9151p44j6.apps.googleusercontent.com",
     clientSecret: "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",
-    callbackURL: "http://localhost/5000/auth/google/callback"
+    callbackURL: "/auth/google/callback"
   },
-  function(accessToken, refreshToken, profile, cb) {
+  function(accessToken, refreshToken, profile, done) {
     done(null, profile);
   }
 ));

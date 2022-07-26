@@ -1,6 +1,5 @@
 import { Box, Button, Container, createTheme, CssBaseline, ThemeProvider, Typography } from '@mui/material';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Copyright from '../Components/Copyright';
 
 const theme = createTheme({
@@ -16,7 +15,14 @@ const theme = createTheme({
     },
 });
 
-const Home = () => {
+const Home = ({user}) => {
+    const logout = () =>{
+      window.open('http://localhost:5000/auth/logout', '_self');
+    }
+    const google = () =>{
+      window.open('http://localhost:5000/auth/google', '_self');
+    }
+
     return (
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs" >
@@ -30,7 +36,7 @@ const Home = () => {
               }}
             >
               <Typography component="h1" variant="h3">
-                Welcome
+                Welcome {user? user.displayName: 'person'}
               </Typography>
             </Box>
             <Box sx={{
@@ -41,11 +47,12 @@ const Home = () => {
               }}>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               <Button
+                onClick={user ? logout:google}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                  <Link to={'/login'}>Login</Link>
+                  {user? 'Logout':'Login'}
               </Button>
               
             </Box>

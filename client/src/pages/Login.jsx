@@ -19,6 +19,10 @@ const theme = createTheme({
   
 const Login = () => {
   
+  const google = () =>{
+    window.open('http://localhost:5000/auth/google', '_self');
+  }
+
     return (
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs" className="container">
@@ -80,6 +84,7 @@ const Login = () => {
             }}>
             Or
             <Button
+                onClick={google}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
